@@ -12,7 +12,7 @@ give me helpful results; searching `python Class` probably will.
 ## Features
 
 - `:FFS {query}` without a query to search the current word, with a query
-to search for the query, all prefixed by the current filetype.
+to search for the query, all scoped to the current filetype.
 
 See the docs for configuration options.
 

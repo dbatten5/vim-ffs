@@ -26,7 +26,7 @@ COMMANDS                                                          *FFSCommands*
 2.1 :FFS[!] {query}                                                      *:FFS*
 
 Perform a search for {query} with the current filetype or custom schema
-mappping prefixed to the query. If no query is provided, the current word
+mappping scope for the query. If no query is provided, the current word
 under the cursor will be used as the query.
 
 With [!], `FFS` will ignore any |b:ffs_scope| variables and the default scope
@@ -38,10 +38,10 @@ CONFIGURATION                                                *FFSConfiguration*
 ------------------------------------------------------------------------------
 3.1 g:ffs_schema                                                 *g:ffs_schema*
 
-This plugin comes with some sensible defaults for prefixing searches, eg.
-calling `:FFS` from a `.vim` file will use `'vimscript'` as the prefix. To add
+This plugin comes with some sensible defaults for scoped searches, eg.
+calling `:FFS` from a `.vim` file will use `'vimscript'` as the scope. To add
 your own custom mappings on top of the defaults, set this configuration
-variable to a dictionary of `'filetype'`, `'prefix'` key value pairs, for
+variable to a dictionary of `'filetype'`, `'scope'` key value pairs, for
 example: >
 
     let g:ffs_schema = {
@@ -53,11 +53,12 @@ example: >
 
 To override the default or custom schema for the current buffer, set a
 `b:ffs_scope` variable to the desired search scope. This can be useful for
-filetypes that are used for specific technologies, for example `yaml` files
-used for `kubernetes` schemas and `js` files used for `react` components. To
-ensure that all `yaml` files that include the word `'apiVersion'` use
-`'kubernetes'` as the search scope rather than `'yaml'`, add the following to
-a `'ftplugin/yaml.vim'` file: >
+filetypes that are used for specific technologies where searches are more
+typically related to the technology, not the filetype, for example `yaml`
+files used for `kubernetes` schemas and `js` files used for `react`
+components. To ensure that all `yaml` files that include the word
+`'apiVersion'` use `'kubernetes'` as the search scope rather than `'yaml'`,
+add the following to a `'ftplugin/yaml.vim'` file: >
 
     augroup ffs_yaml | au!
       autocmd BufEnter *
