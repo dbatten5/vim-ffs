@@ -6,8 +6,9 @@ Web searching based on the current filetype.
 
 ## Motivation
 
-While I'm working in a python file, searching the word `Class` probably won't
-give me helpful results; searching `python Class` probably will.
+While I'm working in a python file, performing a search for the word `Class`
+in a web search engine probably won't give me helpful results; searching
+`python Class` probably will.
 
 ## Features
 

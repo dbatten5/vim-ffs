@@ -1,9 +1,9 @@
 " config
 
 let s:filetype_schema = {
-      \ 'vim': 'vimscript',
-      \ 'cpp': 'c++',
-      \ }
+  \ 'vim': 'vimscript',
+  \ 'cpp': 'c++',
+\ }
 let s:custom_schema = get(g:, 'ffs_schema', {})
 
 " public functions
@@ -36,7 +36,7 @@ function! s:sanitize_string(string)
   return s:url_encode(a:string)
 endfunction
 
-" URL encode a string. ie. Percent-encode characters as necessary.
+" url encode a string. ie. percent-encode characters as necessary.
 " credit to http://www.danielbigham.ca/cgi-bin/document.pl?mode=Display&DocumentID=1053
 function! s:url_encode(string)
   let result = ""
@@ -61,7 +61,7 @@ function! s:url_encode(string)
   return result
 endfunction
 
-" Returns 1 if the given character should be percent-encoded in a URL encoded
+" returns 1 if the given character should be percent-encoded in a url encoded
 " string.
 " credit to http://www.danielbigham.ca/cgi-bin/document.pl?mode=Display&DocumentID=1053
 function! s:character_requires_url_encoding(character)
