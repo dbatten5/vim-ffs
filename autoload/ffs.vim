@@ -9,20 +9,28 @@ let s:custom_schema = get(g:, 'ffs_schema', {})
 " public functions
 
 function! ffs#search(...)
-  let ft = &filetype
-  let schema = extend(copy(s:filetype_schema), s:custom_schema)
-  let scope = get(schema, ft, ft)
+  let scope = s:get_scope()
   if empty(a:1)
     let query = expand('<cword>')
   else
     let query = a:1
   endif
-  let s = s:sanitize_string(scope)
   let q = s:sanitize_string(query)
-  call system(printf('open "https://www.google.com/search?q=%s+%s"', s, q))
+  call system(printf('open "https://www.google.com/search?q=%s+%s"', scope, q))
 endfunction
 
 " utility functions
+
+function! s:get_scope()
+  if exists('b:ffs_scope')
+    let scope = b:ffs_scope
+  else
+    let ft = &filetype
+    let schema = extend(copy(s:filetype_schema), s:custom_schema)
+    let scope = get(schema, ft, ft)
+  endif
+  return s:sanitize_string(scope)
+endfunction
 
 function! s:sanitize_string(string)
   return s:url_encode(a:string)

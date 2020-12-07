@@ -9,6 +9,7 @@ CONTENTS                                                   *FFSContents*
       2.1 |:FFS|
     3. Configuration ....................... |FFSConfiguration|
       3.1 |g:ffs_schema|
+      3.2 |b:ffs_scope|
     4. Mappings ................................. |FFSMappings|
 
 ==============================================================================
@@ -44,8 +45,26 @@ example: >
       \ 'eruby': 'erb',
     \ }
 
+------------------------------------------------------------------------------
+3.2 b:ffs_scope                                                   *b:ffs_scope*
+
+To override the default or custom schema for the current buffer, set a
+`b:ffs_scope` variable to the desired search scope. This can be useful for
+filetypes that are used for specific technologies, for example `yaml` files
+used for `kubernetes` schemas and `js` files used for `react` components. To
+ensure that all `yaml` files that include the word `'apiVersion'` use
+`'kubernetes'` as the search scope rather than `'yaml'`, add the following to
+a `'ftplugin/yaml.vim'` file: >
+
+    augroup ffs_yaml | au!
+      autocmd BufEnter *
+        \ if search('apiVersion', 'nw')
+          \ | let b:ffs_scope = 'kubernetes'
+        \ | endif
+    augroup end
+
 ==============================================================================
-MAPPINGS                                                   *FFSMappings*
+MAPPINGS                                                          *FFSMappings*
 
 Global
 
