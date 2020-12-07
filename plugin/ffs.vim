@@ -1,1 +1,1 @@
-command! -nargs=? FFS call ffs#search(<q-args>)
+command! -nargs=* FFS call ffs#search(<q-args>)

@@ -7,7 +7,7 @@ Google searching based on the current filetype.
 ## Motivation
 
 While I'm working in a python file, Googling the word `Class` probably won't
-give me helpful results. Googling the `python Class` probably will.
+give me helpful results. Googling `python Class` probably will.
 
 ## Features
 

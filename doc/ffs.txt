@@ -1,0 +1,58 @@
+*ffs.txt*  Web searching based on the current filetype                     v1.0
+*FFS*
+
+==============================================================================
+CONTENTS                                                   *FFSContents*
+
+    1. Intro ........................................ |FFSIntro|
+    2. Commands .................................. |FFSCommands|
+      2.1 |:FFS|
+    3. Configuration ....................... |FFSConfiguration|
+      3.1 |g:ffs_schema|
+    4. Mappings ................................. |FFSMappings|
+
+==============================================================================
+OVERVIEW                                                             *FFSIntro*
+
+This plugin provides a way to quickly search the web for a topic from vim,
+scoping the query to the current filetype, working on the assumption that
+scoped searches provide more relevant results than unscoped searches.
+
+==============================================================================
+COMMANDS                                                          *FFSCommands*
+
+------------------------------------------------------------------------------
+2.1 :FFS {query}                                                         *:FFS*
+
+Perform a search for {query} with the current filetype or custom schema
+mappping prefixed to the query. If no query is provided, the current word
+under the cursor will be used as the query.
+
+==============================================================================
+CONFIGURATION                                                *FFSConfiguration*
+
+------------------------------------------------------------------------------
+3.1 g:ffs_schema                                                 *g:ffs_schema*
+
+This plugin comes with some sensible defaults for prefixing searches, eg.
+calling `:FFS` from a `.vim` file will use `'vimscript'` as the prefix. To add
+your own custom mappings on top of the defaults, set this configuration
+variable to a dictionary of `'filetype'`, `'prefix'` key value pairs, for
+example: >
+
+    let g:ffs_schema = {
+      \ 'eruby': 'erb',
+    \ }
+
+==============================================================================
+MAPPINGS                                                   *FFSMappings*
+
+Global
+
+This plugin comes with no mappings out of the box, but feel free to add one
+like so: >
+
+    nnoremap <c-s> :FFS<space>
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:
