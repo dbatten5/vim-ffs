@@ -8,8 +8,8 @@ let s:custom_schema = get(g:, 'ffs_schema', {})
 
 " public functions
 
-function! ffs#search(...)
-  let scope = s:get_scope()
+function! ffs#search(default, ...)
+  let scope = s:get_scope(a:default)
   if empty(a:1)
     let query = expand('<cword>')
   else
@@ -21,8 +21,8 @@ endfunction
 
 " utility functions
 
-function! s:get_scope()
-  if exists('b:ffs_scope')
+function! s:get_scope(default)
+  if !a:default && exists('b:ffs_scope')
     let scope = b:ffs_scope
   else
     let ft = &filetype
