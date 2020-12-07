@@ -29,7 +29,7 @@ Perform a search for {query} with the current filetype or custom schema
 mappping prefixed to the query. If no query is provided, the current word
 under the cursor will be used as the query.
 
-With [!], `FFS` will ignore any *b:ffs_scope* variables and the default scope
+With [!], `FFS` will ignore any |b:ffs_scope| variables and the default scope
 for the current filetype will be used.
 
 ==============================================================================
