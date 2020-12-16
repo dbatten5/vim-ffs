@@ -1,4 +1,4 @@
-*ffs.txt*  Web searching based on the current filetype                     v1.0
+*ffs.txt*  Web searching based on the current filetype                     v1.1
 *FFS*
 
 ==============================================================================
@@ -68,15 +68,26 @@ To override the default or custom schema for the current buffer, set a
 filetypes that are used for specific technologies where searches are more
 typically related to the technology, not the filetype, for example `yaml`
 files used for `kubernetes` schemas and `js` files used for `react`
-components. To ensure that all `yaml` files that include the word
-`'apiVersion'` use `'kubernetes'` as the search scope rather than `'yaml'`,
-add the following to a `'ftplugin/yaml.vim'` file: >
+components.
+
+Examples
+
+To ensure that all `yaml` files that include the word `'apiVersion'` use
+`'kubernetes'` as the search scope rather than `'yaml'`, add the following to
+a `'ftplugin/yaml.vim'` file: >
 
     augroup ffs_yaml | au!
       autocmd BufEnter *
         \ if search('apiVersion', 'nw')
           \ | let b:ffs_scope = 'kubernetes'
         \ | endif
+    augroup end
+
+To scope a test file to a particular framework, for example pytest, add the
+following to a `'ftplugin/python.vim'` file: >
+
+    augroup ffs_py | au!
+      autocmd BufEnter test_*.py let b:ffs_scope = 'pytest'
     augroup end
 
 ==============================================================================
