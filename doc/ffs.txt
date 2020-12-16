@@ -9,7 +9,8 @@ CONTENTS                                                   *FFSContents*
       2.1 |:FFS|
     3. Configuration ....................... |FFSConfiguration|
       3.1 |g:ffs_schema|
-      3.2 |b:ffs_scope|
+      3.2 |g:ffs_engine|
+      3.3 |b:ffs_scope|
     4. Mappings ................................. |FFSMappings|
 
 ==============================================================================
@@ -49,7 +50,18 @@ example: >
     \ }
 
 ------------------------------------------------------------------------------
-3.2 b:ffs_scope                                                   *b:ffs_scope*
+3.2 g:ffs_engine                                                 *g:ffs_engine*
+
+This plugin uses Google as the default search engine. If you prefer to use a
+different engine, set this variable to the url of the desired search result
+page. Just make sure to include two `%s` placeholders, the first will be the
+scope and second will be the query. For example, to use Ask Jeeves as your
+engine: >
+
+    let g:ffs_engine = 'https://ask.com/web?q=%s+%s'
+
+------------------------------------------------------------------------------
+3.3 b:ffs_scope                                                   *b:ffs_scope*
 
 To override the default or custom schema for the current buffer, set a
 `b:ffs_scope` variable to the desired search scope. This can be useful for

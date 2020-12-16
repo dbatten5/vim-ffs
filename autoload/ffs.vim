@@ -5,6 +5,7 @@ let s:filetype_schema = {
   \ 'cpp': 'c++',
 \ }
 let s:custom_schema = get(g:, 'ffs_schema', {})
+let s:engine = get(g:, 'ffs_engine', 'https://www.google.com/search?q=%s+%s')
 
 " public functions
 
@@ -16,7 +17,7 @@ function! ffs#search(default, ...)
     let query = a:1
   endif
   let q = s:sanitize_string(query)
-  call system(printf('open "https://www.google.com/search?q=%s+%s"', scope, q))
+  call system(printf('open "' . s:engine . '"', scope, q))
 endfunction
 
 " utility functions
